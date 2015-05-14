@@ -1,0 +1,36 @@
+{
+  "name": "pg-uuid",
+  "description": "UUID implemenation derived from OpenJDK",
+  "version": "0.9.0",
+  "main": "lib/pg-uuid.js",
+  "main-es6": "src/pg-uuid.es6",
+  "scripts": {
+    "test": "gulp test",
+    "build": "gulp build",
+    "postinstall": "babel src/ --out-dir lib/"
+  },
+  "author": {
+    "name": "David Haines",
+    "email": "david@polyglotted.io"
+  },
+  "contributors": [
+    {
+      "name": "Ahmed Nuaman",
+      "email": "ahmed@polyglotted.io"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:polyglotted/pg-uuid.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-fibre-tasks": "^1.0.6"
+  },
+  "dependencies": {
+    "chai": "^2.3.0",
+    "pg-long": "^0.9.1",
+    "secure-random": "^1.1.1"
+  }
+}
