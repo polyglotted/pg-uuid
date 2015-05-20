@@ -19,6 +19,11 @@
       "email": "ahmed@polyglotted.io"
     }
   ],
+  "files": [
+    "dist/",
+    "lib/",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:polyglotted/pg-uuid.git"
@@ -30,7 +35,7 @@
   },
   "dependencies": {
     "chai": "^2.3.0",
-    "pg-long": "^0.9.1",
+    "pg-long": "^0.9.3",
     "secure-random": "^1.1.1"
   }
 }
