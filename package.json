@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "chai": "^2.3.0",
+    "lodash": "^3.9.1",
     "pg-long": "^0.9.3",
     "secure-random": "^1.1.1"
   }

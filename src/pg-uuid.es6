@@ -1,14 +1,20 @@
 import {assert} from 'chai';
+import _ from 'lodash';
 import secureRandom from 'secure-random';
 import Long from 'pg-long';
 
 let digits,
-    getSigBits;
+    getSigBits,
+    isArrayLike;
 
 /** Returns val represented by the specified number of hex digits. */
 digits = (val, dig) => {
   let hi = Long.ONE.shiftLeft(dig * 4);
   return Long.toHexString(hi.or(val.and(hi.subtract(Long.ONE)))).substring(1);
+};
+
+isArrayLike = (value) => {
+  return _.isArray(value) || value instanceof Buffer || value instanceof Uint8Array;
 };
 
 getSigBits = (data) => {
@@ -32,8 +38,8 @@ getSigBits = (data) => {
 
 class UUID {
   constructor (mostSigBits, leastSigBits) {
-    assert.instanceOf(mostSigBits, Long);
-    assert.instanceOf(leastSigBits, Long);
+    assert(Long.isLong(mostSigBits));
+    assert(Long.isLong(leastSigBits));
     this.mostSigBits = mostSigBits;
     this.leastSigBits = leastSigBits;
   }
@@ -84,13 +90,13 @@ class UUID {
   }
 
   static fromBytes (bytes) {
-    assert.isArray(bytes);
+    assert(isArrayLike(bytes), 'expected array like value');
     assert.equal(bytes.length, 16);
     return new UUID(Long.fromBytes(bytes.slice(0, 8)), Long.fromBytes(bytes.slice(8)));
   }
 
   toBytes () {
-    return this.mostSigBits.toBytes(8).concat(this.leastSigBits.toBytes(8));
+    return Long.toBytes(this.mostSigBits, 8).concat(Long.toBytes(this.leastSigBits, 8));
   }
 
   toString () {
