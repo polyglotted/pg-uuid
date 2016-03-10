@@ -1,7 +1,7 @@
 {
   "name": "pg-uuid",
   "description": "UUID implemenation derived from OpenJDK",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "main": "lib/pg-uuid.js",
   "main-es6": "src/pg-uuid.es6",
   "scripts": {
@@ -29,8 +29,9 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
+    "escope": "3.3.0",
     "gulp": "^3.8.11",
-    "gulp-fibre-tasks": "^1.3.0"
+    "gulp-fibre-tasks": "^1.6.0"
   },
   "dependencies": {
     "chai": "^2.3.0",
