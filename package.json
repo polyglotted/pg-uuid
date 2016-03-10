@@ -1,7 +1,7 @@
 {
   "name": "pg-uuid",
   "description": "UUID implemenation derived from OpenJDK",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "main": "lib/pg-uuid.js",
   "main-es6": "src/pg-uuid.es6",
   "scripts": {
