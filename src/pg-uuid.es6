@@ -102,7 +102,7 @@ class UUID {
   static fromBytes (bytes) {
     assert(isArrayLike(bytes), 'expected array like value');
     assert.equal(bytes.length, 16);
-    return new UUID(Long.fromBytes(slice(bytes, 0, 8)), Long.fromBytes(slice(bytes, 8)));
+    return new UUID(Long.fromBytes(slice(bytes, 0, 8)), Long.fromBytes(slice(bytes, 8, 16)));
   }
 
   toBytes () {
