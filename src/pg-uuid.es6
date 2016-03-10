@@ -5,7 +5,8 @@ import Long from 'pg-long';
 
 let digits,
     getSigBits,
-    isArrayLike;
+    isArrayLike,
+    slice;
 
 /** Returns val represented by the specified number of hex digits. */
 digits = (val, dig) => {
@@ -34,6 +35,16 @@ getSigBits = (data) => {
   }
 
   return [msb, lsb];
+};
+
+slice = (array, begin, end) => {
+  let proto = Object.getPrototypeOf(array);
+  if (proto.slice) {
+    return array.slice(begin, end);
+  } else if (proto.subarray) {
+    return array.subarray(begin, end);
+  }
+  throw new Error('array prototype missing both slice and subarray');
 };
 
 class UUID {
@@ -92,7 +103,7 @@ class UUID {
   static fromBytes (bytes) {
     assert(isArrayLike(bytes), 'expected array like value');
     assert.equal(bytes.length, 16);
-    return new UUID(Long.fromBytes(bytes.slice(0, 8)), Long.fromBytes(bytes.slice(8)));
+    return new UUID(Long.fromBytes(slice(bytes, 0, 8)), Long.fromBytes(slice(bytes, 8)));
   }
 
   toBytes () {
