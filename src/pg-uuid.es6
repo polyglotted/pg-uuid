@@ -38,10 +38,9 @@ getSigBits = (data) => {
 };
 
 slice = (array, begin, end) => {
-  let proto = Object.getPrototypeOf(array);
-  if (proto.slice) {
+  if (array.slice) {
     return array.slice(begin, end);
-  } else if (proto.subarray) {
+  } else if (array.subarray) {
     return array.subarray(begin, end);
   }
   throw new Error('array prototype missing both slice and subarray');
